@@ -56,6 +56,13 @@ def grade_calculator(num_grade: int):
     return grade
 
 
+# ex7
+def factorial(number: int):
+    if number == 0:
+        return 1
+    if number < 0:
+        raise ValueError("should be non ")
+    return number * factorial(number - 1)
 
 def main():
     print("is_even(5):", is_even(5))
@@ -77,6 +84,14 @@ def main():
     print("flip_int(2):", flip_int(2))
     print("flip_int(-690):", flip_int(-690))
     print('flip_int("12345"):', flip_int("12345"))
+
+    print("grade_calculator(58):", grade_calculator(58))
+    print("grade_calculator(82):", grade_calculator(82))
+    print("grade_calculator(100):", grade_calculator(100))
+
+    print("factorial(0):", factorial(0))
+    print("factorial(1):", factorial(1))
+    print("factorial(7):", factorial(7))
 
 if __name__ == '__main__':
     main()
