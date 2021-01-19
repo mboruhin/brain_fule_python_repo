@@ -22,6 +22,23 @@ def main():
     int_to_translate = 48
     print("the char:", chr(int_to_translate))
 
+    set1 = {"live", "die", "repeat"}
+    for x in enumerate(set1):
+        num, string = x
+        print("num:", num, "  string:", string)
+
+    num_list = [1, 2, 4, 8, 9]
+    str_list = ["dog", "cat", "bird"]
+    result = zip(num_list, str_list)
+    print(result)
+    print(list(result))
+
+    print("reversed(num_list):", reversed(num_list))
+    print("num_list:", num_list)
+    num_list.reverse()
+    print(num_list)
+
+
 
 if __name__ == '__main__':
     main()
