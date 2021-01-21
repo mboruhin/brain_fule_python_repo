@@ -1,4 +1,6 @@
+from c_scopes_and_modules import is_name_in_global_namespace
 
+aaaaaaaaaaaaaaaaaaaaa = 15
 
 def crap1(number):
     bla = 0
@@ -38,6 +40,21 @@ def main():
     num_list.reverse()
     print(num_list)
 
+
+    class Bla:
+        def __init__(self, x, y):
+            self.x = x
+            self.y = y
+
+        def __repr__(self):
+            return f"x: {self.x}, y: {self.y}"
+
+    bla1 = Bla(3, 5)
+    print(bla1)
+    print(bla1.__dict__)
+
+    print(globals())
+    print("is_name_in_global_namespace('random_global_var'):", is_name_in_global_namespace('random_global_var'))
 
 
 if __name__ == '__main__':
