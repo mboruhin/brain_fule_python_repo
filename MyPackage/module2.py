@@ -1,6 +1,8 @@
+__all__ = ["bar", "_bar"]
+
 def bar():
-    pass
+    print("bar")
 
 
 def _bar():
-    pass
+    print("_bar")

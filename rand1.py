@@ -1,4 +1,5 @@
 from c_scopes_and_modules import is_name_in_global_namespace
+from sys import getrefcount
 
 aaaaaaaaaaaaaaaaaaaaa = 15
 
@@ -55,6 +56,8 @@ def main():
 
     print(globals())
     print("is_name_in_global_namespace('random_global_var'):", is_name_in_global_namespace('random_global_var'))
+
+    print(getrefcount(0))
 
 
 if __name__ == '__main__':

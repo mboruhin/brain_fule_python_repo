@@ -1,6 +1,6 @@
 def foo():
-    pass
+    print("foo")
 
 
 def _foo():
-    pass
+    print("_foo")

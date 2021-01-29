@@ -14,9 +14,19 @@ def main():
     print("is_name_in_global_namespace('random_global_var'):", is_name_in_global_namespace('random_global_var'))
 
 
-# ex3
 
 
 
 if __name__ == '__main__':
     main()
+
+
+# ex3
+import MyPackage.module1
+MyPackage.module1.foo()
+
+
+from MyPackage.module2 import *
+
+bar()
+_bar()
