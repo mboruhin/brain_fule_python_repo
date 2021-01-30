@@ -1,3 +1,4 @@
+# from https://beginnersbook.com/2018/03/python-constructors-default-and-parameterized/
 class DemoClass:
     num = 101
 

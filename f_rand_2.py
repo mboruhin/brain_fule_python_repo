@@ -23,11 +23,47 @@ class Test(FrozenClass):
         self._freeze() # no new attributes after this point.
 
 
-a,b = Test(), Test()
-a.x = 10
-b.z = 10 # fails
+def test1():
+    a,b = Test(), Test()
+    a.x = 10
+    b.z = 10 # fails
+
 
 # ----------------------------------------------------------------------------------------------
-f = FrozenClass()
-print(type(f))
-print(f.__dict__)
+# my version
+class ClassWithFreeze:
+    __is_frozen = False
+
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+        self.__is_frozen = True
+
+
+    def __setattr__(self, key, value):
+        if self.__is_frozen and key not in self.__dict__.keys():
+            raise TypeError( "%r is a frozen class" % self)
+        else:
+            self.__dict__[key] = value
+
+    def __repr__(self):
+        return f"ClassWithFreeze object. x = {self.x}, y = {self.y}."
+
+
+def test2():
+    var1 = ClassWithFreeze(3,5)
+    print(var1)
+    var1.x = 8
+    var1.y = 55
+    print(var1)
+    # var1.z = 8 # should fail here
+    var2 = ClassWithFreeze(300,500)
+    print(var2)
+    var2.x = 800
+    var2.y = 5500
+    print(var2)
+
+
+if __name__ == '__main__':
+    # test1()
+    test2()
