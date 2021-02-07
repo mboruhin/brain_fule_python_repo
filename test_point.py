@@ -1,6 +1,7 @@
 import unittest
 from point import Point
 
+
 class PointTest(unittest.TestCase):
     def test_point_repr(self):
         p1 = Point(3, 4)

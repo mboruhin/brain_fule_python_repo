@@ -1,5 +1,5 @@
 import unittest
-from e_for_shits_and_giggles import ShitsAndGiggles
+from e_fucken_find_it.e_for_shits_and_giggles import ShitsAndGiggles
 
 
 class First(unittest.TestCase):
