@@ -36,6 +36,11 @@ def all_even_in_range_using_for(first_num: int, last_num: int):
     return ret_list
 
 
+def all_even_in_range_using_range(first_num: int, last_num: int) -> list[int]:
+    if first_num % 2 != 0:
+        first_num += 1
+    return list(range(first_num, last_num + 1, 2))
+
 # ex3
 def letters_occurance(string: str):
     letter_list = list(string)
@@ -51,6 +56,7 @@ def print_list_elements_with_index(obj_list):
     for index, item in enumerate(obj_list):
         print(f"index: {index}, element: {item}")
 
+
 def print_dict_elements_with_index(obj_dict):
     for index, item in enumerate(obj_dict.items()):
         print(f"index: {index}, element: {item}")
@@ -58,7 +64,7 @@ def print_dict_elements_with_index(obj_dict):
 
 # ex5
 def combine_lists_with_no_duplicates(list1, list2):
-    return list(set(set(list1) | set(list2)))
+    return list(set(list1) | set(list2))
 
 
 def combine_lists_with_no_duplicates_2(list1, list2):
@@ -67,22 +73,26 @@ def combine_lists_with_no_duplicates_2(list1, list2):
     for element in combined_list:
         if element not in ret_list:
             ret_list.append(element)
-    return  ret_list
+    return ret_list
 
 
 # ex6
-def rotate_list_left(orig_list, steps):
-    steps = steps % len(orig_list)
+def rotate_list_left(orig_list, steps: int):
+    length = len(orig_list)
+    steps = steps % length
     rev_list = orig_list[::-1]
-    ret_list_l = rev_list[steps::-1]
-    # print("ret_list_l:", ret_list_l)
-    ret_list_r = rev_list[:steps:-1]
-    # print("ret_list_r:", ret_list_r)
+    ret_list_l = rev_list[length - steps - 1::-1]
+    print("ret_list_l:", ret_list_l)
+    ret_list_r = rev_list[length - 1: length - steps - 1:-1]
+    print("ret_list_r:", ret_list_r)
     return ret_list_l + ret_list_r
 
 
-    return ret_list
-
+def rotate_list_left_v2(orig_list, steps: int):
+    steps = steps % len(orig_list)
+    rot_list = orig_list[steps::]
+    rot_list.extend(orig_list[:steps:])
+    return rot_list
 
 
 def main():
@@ -93,6 +103,7 @@ def main():
     # ex2
     print(all_even_in_range_using_while(0, 100))
     print(all_even_in_range_using_for(0, 100))
+    print(all_even_in_range_using_range(0, 100))
 
     # ex3
     print(letters_occurance("the dolphin is dead!"))
@@ -113,8 +124,10 @@ def main():
 
     # ex6
     orig_list = ["a", "b", "c", "d", "e", "f", "g"]
-    rotated_list = rotate_list_left(orig_list, 3)
+    rotation = 9
+    rotated_list = rotate_list_left(orig_list, rotation)
     print("rotated_list:", rotated_list)
+    print("rotated_list v2:", rotate_list_left_v2(orig_list, rotation))
 
 
 if __name__ == '__main__':
