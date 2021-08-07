@@ -6,12 +6,16 @@ def div(a, b):
         print("division by 0!")
     except TypeError:
         print("incorrect input types!")
-
+        raise # re-raising the current exception
 
 
 def main():
-    a = div(4 , 0)
-    b = div("cat", 8)
+    a = div(4, 0)
+    try:
+        b = div("cat", 8)
+    except TypeError:
+        print("in main - incorrect input types!")
+
     c = div(5, 2)
     print("c:", c)
 
