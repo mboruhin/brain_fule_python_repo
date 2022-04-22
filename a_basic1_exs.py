@@ -26,8 +26,8 @@ def is_leap_year(year: int):
 
 
 # ex4
-def is_int(input):
-    return type(input) == int
+def is_int(var):
+    return type(var) == int
 
 
 # ex5

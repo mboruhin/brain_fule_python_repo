@@ -1,3 +1,6 @@
+from typing import List, Dict
+
+
 # ex1
 def squared_upto(first_num: int, last_number: int):
     root = first_num
@@ -8,6 +11,7 @@ def squared_upto(first_num: int, last_number: int):
         root += 1
         squared = root ** 2
     return list_of_squared
+
 
 def squared_upto_with_for(first_num: int, last_number: int):
     max_root = int(last_number ** 0.5)
@@ -57,14 +61,24 @@ def print_list_elements_with_index(obj_list):
         print(f"index: {index}, element: {item}")
 
 
-def print_dict_elements_with_index(obj_dict):
-    for index, item in enumerate(obj_dict.items()):
-        print(f"index: {index}, element: {item}")
+def print_dict_elements_with_index(input_dict: Dict):
+    for index, item in enumerate(list(input_dict.items())):
+        print(f'index: {index}, key: {item[0]} - value: {item[1]}')
 
 
 # ex5
 def combine_lists_with_no_duplicates(list1, list2):
-    return list(set(list1) | set(list2))
+    return list(set(list1) & set(list2))
+    # another option:
+    # return list(set1.intersection(set2))
+
+
+def combine_lists_with_no_duplicates_using_list_comprehension(lst1: List, lst2: List):
+    return list(set([item for item in lst1 if item in lst2]))
+
+
+def combine_lists_with_no_duplicates_using_lambda_as_filter(lst1: List, lst2: List):
+    return list(set(filter(lambda x: x in lst1, lst2)))
 
 
 def combine_lists_with_no_duplicates_2(list1, list2):
@@ -77,6 +91,7 @@ def combine_lists_with_no_duplicates_2(list1, list2):
 
 
 # ex6
+# old school approach
 def rotate_list_left(orig_list, steps: int):
     length = len(orig_list)
     steps = steps % length
@@ -86,6 +101,15 @@ def rotate_list_left(orig_list, steps: int):
     ret_list_r = rev_list[length - 1: length - steps - 1:-1]
     print("ret_list_r:", ret_list_r)
     return ret_list_l + ret_list_r
+
+
+# more pythonic approach
+def left_rotation_using_slicing(orig_list: List, rotation: int):
+    actual_rotation = rotation % len(orig_list)
+    rotated_list = orig_list[actual_rotation::]
+    temp_list = orig_list[:actual_rotation:]
+    rotated_list = rotated_list + temp_list
+    return rotated_list
 
 
 def rotate_list_left_v2(orig_list, steps: int):
